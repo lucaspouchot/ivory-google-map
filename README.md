@@ -4,6 +4,25 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/bresam/ivory-google-map/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/bresam/ivory-google-map/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bresam/ivory-google-map/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bresam/ivory-google-map/?branch=master)
 
+## Quickstart
+[Packagist: ivory/google-map](https://packagist.org/packages/ivory/google-map)
+
+```composer require ivory/google-map``` 
+
+### Symfony Bundle
+[Github: ivory/google-map-bundle](https://github.com/bresam/ivory-google-map-bundle)
+
+[Packagist: ivory/google-map-bundle](https://packagist.org/packages/ivory/google-map-bundle)
+
+```composer require ivory/google-map-bundle``` 
+
+### Contao Bundle
+
+[Github: heimrichhannot/contao-google-maps-bundle](https://github.com/heimrichhannot/contao-google-maps-bundle)
+
+[Packagist: heimrichhannot/contao-google-maps-bundle](https://packagist.org/packages/heimrichhannot/contao-google-maps-bundle)
+
+
 ## Overview
 
 The Ivory Google Map project provides a Google Map integration for your PHP 7.0+ project. 
