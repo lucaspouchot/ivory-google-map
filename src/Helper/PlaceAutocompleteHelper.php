@@ -51,7 +51,7 @@ class PlaceAutocompleteHelper extends AbstractHelper
      */
     private function doRender(Autocomplete $autocomplete, $eventName)
     {
-        $this->getEventDispatcher()->dispatch($eventName, $event = new PlaceAutocompleteEvent($autocomplete));
+        $this->getEventDispatcher()->dispatch($event = new PlaceAutocompleteEvent($autocomplete), $eventName);
 
         return $event->getCode();
     }
