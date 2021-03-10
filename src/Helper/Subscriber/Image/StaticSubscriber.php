@@ -15,6 +15,7 @@ use Ivory\GoogleMap\Helper\Event\StaticMapEvents;
 use Ivory\GoogleMap\Helper\Subscriber\DelegateSubscriberInterface;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
@@ -26,11 +27,13 @@ class StaticSubscriber implements DelegateSubscriberInterface
      */
     public function handle(Event $event, $eventName, EventDispatcherInterface $eventDispatcher)
     {
+        $dispatcher = LegacyEventDispatcherProxy::decorate($eventDispatcher);
+
         $delegates = static::getDelegatedSubscribedEvents();
 
-        if (isset($delegates[$eventName])) {
+        if (isset($delegates[$eventName]) && $dispatcher !== null) {
             foreach ($delegates[$eventName] as $delegate) {
-                $eventDispatcher->dispatch($event, $delegate);
+                $dispatcher->dispatch($event, $delegate);
             }
         }
     }
