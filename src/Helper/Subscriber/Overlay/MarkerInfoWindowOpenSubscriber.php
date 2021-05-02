@@ -88,6 +88,10 @@ class MarkerInfoWindowOpenSubscriber extends AbstractMarkerSubscriber
                     $rawEvent
                 ));
             }
+            if ($marker->hasInfoWindow() && $marker->getInfoWindow()->isOpen()) {
+                $event->addCode($formatter->renderCode($this->infoWindowOpenRenderer->render($marker->getInfoWindow(), $map, $marker)));
+                $marker->getInfoWindow()->setOpen(false);
+            }
         }
     }
 
