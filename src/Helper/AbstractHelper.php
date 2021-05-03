@@ -12,6 +12,7 @@
 namespace Ivory\GoogleMap\Helper;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
@@ -41,6 +42,6 @@ abstract class AbstractHelper
      */
     public function setEventDispatcher($eventDispatcher)
     {
-        $this->eventDispatcher = $eventDispatcher;
+        $this->eventDispatcher = LegacyEventDispatcherProxy::decorate($eventDispatcher);
     }
 }
