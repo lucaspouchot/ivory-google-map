@@ -28,14 +28,14 @@ class VariableAwareTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->variableAware = new VariableAwareMock();
     }
 
     public function testDefaultState()
     {
-        $this->assertInternalType('string', $this->variableAware->getVariable());
+        $this->assertIsString($this->variableAware->getVariable());
         $this->assertRegExp('/^variableawaremock[a-z0-9]*$/', $this->variableAware->getVariable());
     }
 

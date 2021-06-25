@@ -9,18 +9,15 @@
  * file that was distributed with this source code.
  */
 
-use PhpCsFixer\Config;
-use PhpCsFixer\Finder;
-
-$finder = Finder::create()
+$finder = PhpCsFixer\Finder::create()
+    ->exclude('tests/Fixture/Resource/config')
     ->in([
         __DIR__.'/src',
         __DIR__.'/tests',
-    ])
-    ->exclude('tests/Fixture/Resource/config');
+    ]);
 
-return Config::create()
-    ->setUsingCache(true)
+$config = new PhpCsFixer\Config();
+return $config
     ->setRules([
         '@Symfony'               => true,
         'array_syntax'           => ['syntax' => 'short'],

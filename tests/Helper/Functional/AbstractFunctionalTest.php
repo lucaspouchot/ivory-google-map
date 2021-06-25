@@ -11,10 +11,12 @@
 
 namespace Ivory\Tests\GoogleMap\Helper\Functional;
 
+use PHPUnit\Extensions\Selenium2TestCase;
+
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
-abstract class AbstractFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
+abstract class AbstractFunctionalTest extends Selenium2TestCase
 {
     /**
      * @var string
@@ -29,7 +31,7 @@ abstract class AbstractFunctionalTest extends \PHPUnit_Extensions_Selenium2TestC
     /**
      * {@inheritdoc}
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::$directory = sys_get_temp_dir().'/ivory-google-map';
         self::$hasDirectory = is_dir(self::$directory);
@@ -42,7 +44,7 @@ abstract class AbstractFunctionalTest extends \PHPUnit_Extensions_Selenium2TestC
     /**
      * {@inheritdoc}
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         if (!self::$hasDirectory) {
             rmdir(self::$directory);
@@ -52,7 +54,7 @@ abstract class AbstractFunctionalTest extends \PHPUnit_Extensions_Selenium2TestC
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         if (isset($_SERVER['SELENIUM_HOST'])) {
             $this->setHost($_SERVER['SELENIUM_HOST']);
@@ -86,7 +88,7 @@ abstract class AbstractFunctionalTest extends \PHPUnit_Extensions_Selenium2TestC
         }
 
         if (false === @fclose($file)) {
-            throw new\RuntimeException(sprintf('Unable to close the file "%s".', $name));
+            throw new \RuntimeException(sprintf('Unable to close the file "%s".', $name));
         }
 
         $this->url(basename($name));

@@ -11,9 +11,8 @@
 
 namespace Ivory\GoogleMap\Helper\Subscriber;
 
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
@@ -25,13 +24,11 @@ abstract class AbstractDelegateSubscriber extends AbstractSubscriber implements 
      */
     public function handle(Event $event, $eventName, EventDispatcherInterface $eventDispatcher)
     {
-        $dispatcher = LegacyEventDispatcherProxy::decorate($eventDispatcher);
-
         $delegates = static::getDelegatedSubscribedEvents();
 
         if (isset($delegates[$eventName])) {
             foreach ($delegates[$eventName] as $delegate) {
-                $dispatcher->dispatch($event, $delegate);
+                $eventDispatcher->dispatch($event, $delegate);
             }
         }
     }
