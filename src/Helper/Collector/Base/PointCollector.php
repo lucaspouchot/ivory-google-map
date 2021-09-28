@@ -62,6 +62,10 @@ class PointCollector extends AbstractCollector
                 if ($icon->hasOrigin()) {
                     $points = $this->collectValue($icon->getOrigin(), $points);
                 }
+
+                if ($icon->hasLabelOrigin()) {
+                    $points = $this->collectValue($icon->getLabelOrigin(), $points);
+                }
             }
         }
 

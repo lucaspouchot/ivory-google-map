@@ -86,3 +86,14 @@ use Ivory\GoogleMap\Base\Size;
 
 $icon->setScaledSize(new Size(20, 34));
 ```
+
+## Configure label origin
+
+If you want to update the label origin, you can use:
+
+``` php
+use Ivory\GoogleMap\Base\Point;
+
+$icon->setLabelOrigin(new Point(0, 0));
+
+```
