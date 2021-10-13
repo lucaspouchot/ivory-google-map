@@ -43,6 +43,10 @@ class IconRenderer extends AbstractJsonRenderer
             $jsonBuilder->setValue('[size]', $icon->getScaledSize()->getVariable(), false);
         }
 
+        if ($icon->hasLabelOrigin()) {
+            $jsonBuilder->setValue('[labelOrigin]', $icon->getLabelOrigin()->getVariable(), false);
+        }
+
         return $this->getFormatter()->renderObjectAssignment($icon, $jsonBuilder->build());
     }
 }
